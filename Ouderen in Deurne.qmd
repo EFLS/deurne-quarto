@@ -1,0 +1,78 @@
+---
+title: Ouderen in Deurne
+author: Elias Storms
+date: today
+lang: nl
+
+toc: true
+format: html
+embed-resources: true
+---
+
+```{r}
+#| include: false
+source(file = "import.r")
+source(file = "grafieken.r")
+
+# https://arelbundock.com/posts/quarto_figures/index.html
+knitr::opts_chunk$set(
+    out.width = "100%", # enough room to breath
+    fig.width = 8,      # reasonable size
+    fig.asp = 0.8,
+    fig.align = "center" # mostly what I want
+)
+```
+
+Dit zijn voorlopige aantekeningen in kader van het "Thuis in de Stad" project van Stadskracht (AP Hogeschool).
+
+
+## Waar wonen ouderen in Deurne?
+
+```{r}
+#| include: false
+aantal_wijken   <- nrow(d)
+aantal_inwoners <- sum(d$bevolking_totaal)
+aantal_ouderen  <- sum(d$ouderen_aantal)
+perc_ouderen <- aantal_ouderen / aantal_inwoners
+```
+
+Zo'n 14 duizend inwoners van Deurne, ofwel 16,5% van de bevolking, is
+65 jaar of ouder. In sommige buurten wonen meer ouderen dan in andere.
+
+```{r}
+#| label: fig-graf-aantal
+#| fig-cap: Aantal ouderen per buurt
+#| fig-asp: .75
+#| echo: false
+g_aantal +
+  theme_minimal() +
+  theme(panel.grid.major.y = element_blank())
+```
+
+```{r}
+#| label: fig-kaart-aantal
+#| fig-cap: Aantal ouderen per buurt
+#| fig-asp: .9
+#| echo: false
+m_aantal
+```
+
+Deze spreiding van ouderen over buurten hangt samen met de ongelijke
+verdeling van de algemene bevolking over Deurne. Buurten als
+Muggenberg, Gallifort, Conforta en Kronenburg zijn erg dichtbevolkt.
+
+Maar niet alle buurten met veel inwoners tellen ook veel ouderen. Zo
+wonen in de buurten Ten Eekhove en Kronenburg meer dan 6400 personen,
+maar relatief weinig van hen zijn ouder dan 65 (resp. 9% en 7%).
+Ertbrugge en Arena hebben dan weer minder inwoners, maar relatief meer
+ouderen (resp. 24 en 20%).
+
+```{r}
+#| label: fig-grafiek-samenstelling
+#| fig-cap: Ouderen in buurten in Deurne
+#| echo: false
+g_bevolking_buurt
+```
+
+
+
