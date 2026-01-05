@@ -1,12 +1,12 @@
 ---
-title: Ouderen in Deurne
-author: Elias Storms
+title: "Ouderen in Deurne"
+author: "Elias Storms"
 date: today
 lang: nl
 
-toc: true
-format: html
-embed-resources: true
+format:
+  html:
+    toc: true
 ---
 
 ```{r}
